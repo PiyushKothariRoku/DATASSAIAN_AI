@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
+import pymongo
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -78,10 +80,19 @@ WSGI_APPLICATION = 'DATASSAIAN_AI.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'djongo',
+        'NAME': 'Datahome',  # Use a simple string name for the MongoDB database
+        'CLIENT': {
+            'host': 'mongodb://localhost:27017',
+            'port': 27017,  # default MongoDB port
+            'username': 'Piyush',  # Optional if authentication is required
+            'password': '1234',  # Optional if authentication is required
+            'authSource': 'admin',  # Change if your auth source is different
+            'authMechanism': 'SCRAM-SHA-1',  # Change if your mechanism is different
+        }
     }
 }
+
 
 
 # Password validation
