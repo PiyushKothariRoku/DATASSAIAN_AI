@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Seller</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4 text-center">Register Seller</h1>
+        
+        <div class="card">
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="{{ form.seller_name.id_for_label }}">Seller Name</label>
+                        {{ form.seller_name }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.seller_middle_name.id_for_label }}">Middle Name</label>
+                        {{ form.seller_middle_name }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.seller_last_name.id_for_label }}">Last Name</label>
+                        {{ form.seller_last_name }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.seller_address.id_for_label }}">Address</label>
+                        {{ form.seller_address }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.seller_pan.id_for_label }}">PAN Number</label>
+                        {{ form.seller_pan }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.seller_Addhar.id_for_label }}">Aadhaar Number</label>
+                        {{ form.seller_Addhar }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.Token_money.id_for_label }}">Token Money</label>
+                        {{ form.Token_money }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.total_maps_owned.id_for_label }}">Total Maps Owned</label>
+                        {{ form.total_maps_owned }}
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Register Seller</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
