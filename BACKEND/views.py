@@ -1,8 +1,8 @@
-# views.py
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from .forms import UserLoginForm, MapsForm, OwnerForm, SellerForm, SelledMapsOwnerForm
+from .models_pymongo import Maps, Owner, Seller, SelledMapsOwner
 from django.contrib.auth.decorators import user_passes_test
 
 
@@ -40,7 +40,14 @@ def register_maps(request):
     if request.method == 'POST':
         form = MapsForm(request.POST)
         if form.is_valid():
-            form.save()
+            data = form.cleaned_data
+            maps = Maps(
+                maps_name=data['maps_name'],
+                maps_length=data['maps_length'],
+                maps_width=data['maps_width'],
+                is_for_sale=data['is_for_sale']
+            )
+            maps.save()
             return redirect('success')
     else:
         form = MapsForm()
@@ -51,7 +58,16 @@ def register_owner(request):
     if request.method == 'POST':
         form = OwnerForm(request.POST)
         if form.is_valid():
-            form.save()
+            data = form.cleaned_data
+            owner = Owner(
+                owner_name=data['owner_name'],
+                owner_middle_name=data.get('owner_middle_name', 'Unknown'),
+                owner_last_name=data['owner_last_name'],
+                owner_address=data['owner_address'],
+                owner_pan=data['owner_pan'],
+                owner_addhar=data['owner_addhar']
+            )
+            owner.save()
             return redirect('success')
     else:
         form = OwnerForm()
@@ -62,7 +78,16 @@ def register_seller(request):
     if request.method == 'POST':
         form = SellerForm(request.POST)
         if form.is_valid():
-            form.save()
+            data = form.cleaned_data
+            seller = Seller(
+                seller_name=data['seller_name'],
+                seller_middle_name=data.get('seller_middle_name', 'Unknown'),
+                seller_last_name=data['seller_last_name'],
+                seller_address=data['seller_address'],
+                seller_pan=data['seller_pan'],
+                seller_addhar=data['seller_addhar']
+            )
+            seller.save()
             return redirect('success')
     else:
         form = SellerForm()
@@ -73,7 +98,14 @@ def register_deal(request):
     if request.method == 'POST':
         form = SelledMapsOwnerForm(request.POST)
         if form.is_valid():
-            form.save()
+            data = form.cleaned_data
+            deal = SelledMapsOwner(
+                maps_id=data['maps_id'],
+                owner_id=data['owner_id'],
+                seller_id=data['seller_id'],
+                token_money=data['token_money']
+            )
+            deal.save()
             return redirect('success')
     else:
         form = SelledMapsOwnerForm()

@@ -78,23 +78,6 @@ WSGI_APPLICATION = 'DATASSAIAN_AI.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'djongo',
-        'NAME': 'Datahome',  # Use a simple string name for the MongoDB database
-        'CLIENT': {
-            'host': 'mongodb://localhost:27017',
-            'port': 27017,  # default MongoDB port
-            'username': 'Piyush',  # Optional if authentication is required
-            'password': '1234',  # Optional if authentication is required
-            'authSource': 'admin',  # Change if your auth source is different
-            'authMechanism': 'SCRAM-SHA-1',  # Change if your mechanism is different
-        }
-    }
-}
-
-
-
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
